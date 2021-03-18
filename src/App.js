@@ -1,8 +1,9 @@
 import React from 'react';
+import LanguageList from './components/LanguageList';
 
 function App() {
   return (
-    <h1>Hello, world!</h1>
+    <LanguageList />
   );
 }
 
