@@ -1,14 +1,10 @@
-const keyGen = (() => {
-  let key = 0;
-
-  return () => key++;
-})();
+import { uuid } from 'uuidv4';
 
 class ListData extends Array{
 
   constructor(labels = null) {
     super();
-    this.forEach.call(labels, (label, key) => this.push({label, key, count: 0}));
+    this.forEach.call(labels, (label) => this.push({label, key: uuid(), count: 0}));
   }
 
   getByKey(key) {
@@ -18,15 +14,18 @@ class ListData extends Array{
   }
 
   incrementCount(key) {
-    let i = this.getByKey(key);
-    this[i].count++;
+
+    this[this.getByKey(key)].count++;
+    console.log(this);
     return [...this];
   }
 
   add(label) {
-    let key = keyGen();
-
+    label = label.trim();
+    if (!label) return;
+    let key = uuid();
     this.push({ label, key, count: 0 });
+    console.log(this);
     return [...this];
   }
 
@@ -38,6 +37,6 @@ class ListData extends Array{
   }
 }
 
-const listData = new ListData(['Angular', 'jQuery', 'Polymer', 'React', 'Vue.js']);
+const listData = new ListData(['Ruby', 'JavaScrypt', 'C++', 'C', 'Pascal']);
 
 export { listData };

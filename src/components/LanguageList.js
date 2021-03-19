@@ -42,7 +42,7 @@ export default function LanguageList({ setLanguageList, listData }) {
                 {count}
               </Avatar>
             </ListItemAvatar>
-            <ListItemText id={key} primary={label} />
+            <ListItemText id={key.toString()} primary={label} />
             <IconButton aria-label="plus one" onClick={handlePlusOne(key)}>
               <Avatar>
                 +1
